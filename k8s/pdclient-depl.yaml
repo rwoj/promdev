@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdclient-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdclient
+  template:
+    metadata:
+      labels:
+        app: pdclient
+    spec:
+      containers:
+        - name: pdclient
+          image: rwoj/pdclient
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdclient-srv
+spec:
+  selector:
+    app: pdclient
+  ports:
+    - name: pdclient
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

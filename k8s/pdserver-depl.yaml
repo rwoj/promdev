@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdserver-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdserver
+  template:
+    metadata:
+      labels:
+        app: pdserver
+    spec:
+      containers:
+        - name: pdserver
+          image: rwoj/pdserver
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdserver-svc
+spec:
+  selector:
+    app: pdserver
+  ports:
+    - name: pdserver
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

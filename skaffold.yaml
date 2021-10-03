@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+metadata:
+  name: promdev
+build:
+  artifacts:
+    - image: rwoj/pdserver
+      context: pdserver
+      docker:
+        dockerfile: Dockerfile
+    - image: rwoj/pdclient
+      context: pdclient
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - k8s/*
