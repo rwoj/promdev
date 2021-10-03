@@ -13,13 +13,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: pdevserver-svc
+                name: pdserver-svc
                 port:
                   number: 3000
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: pdevclient-srv
+                name: pdclient-srv
                 port:
                   number: 3000

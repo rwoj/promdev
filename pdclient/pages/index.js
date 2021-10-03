@@ -29,7 +29,8 @@ export default function Home({ data }) {
 
 export async function getServerSideProps(ctx) {
   // const data = { name: "Radek" };
-  const { data } = await axios.get("http://localhost:4000/api/hello");
+  // const { data } = await axios.get("http://localhost:4000/api/hello");
+  const { data } = await axios.get("http://promise.dev/api/hello");
   console.log("heja", data);
   return {
     props: {
